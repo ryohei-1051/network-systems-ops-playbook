@@ -72,7 +72,15 @@ The issue is resolved when:
 ## Plain-Language Summary
 When the computer cannot connect to the Internet, it probably dose not know where it is or where it should go. To connect the internet, it should use 2 basic things: source and destination address like when you send a mail via canada post. Regarding source information, we use ipconfig command, for destination, we use nslookup command. With both information, the computer can send a request to the Internet. Also, if the path is not available, the requrest is also unreachable and turns out to be internet failure. To make sure the path is active, we can check modem and ISP.
 
+## Reflection
 
+One assumption that could be wrong is that the issue is caused by the ISP or modem. The problem may actually be limited to one client device, such as a disabled adapter, wrong IP configuration, DNS issue, or browser-specific problem.
+
+The most useful evidence would be the client IP configuration, default gateway reachability, DNS resolution result, and whether the client can reach a public IP address such as 8.8.8.8.
+
+The troubleshooting result should document the affected device, IP address, DNS server, gateway test result, modem/router status, and whether the issue was client-side, local network-side, or ISP-side.
+
+To make troubleshooting faster next time, I would follow a consistent order: check the client IP configuration first, then test the default gateway, then test public IP reachability, then test DNS, and finally check the modem/router or ISP status.
 
 - What assumption could have been wrong?
 - What evidence was most useful?
