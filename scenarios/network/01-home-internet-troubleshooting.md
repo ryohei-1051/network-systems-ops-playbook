@@ -10,8 +10,8 @@ Internet reachability to specific website/service
 ISP or modem/router issue
 
 - Expected behavior
-IP configuration should be configure by DHCP and the IP is valid (not APIPA)
-All the website/service should be reachable
+IP configuration should be assigned by DHCP and the IP is valid (not APIPA)
+Known websites/services should be reachable
 ISP or modem/router works correctly
 
 - Possible affected layers
@@ -20,7 +20,7 @@ Layer 3 and Layer 4 or higher
 ## Clarifying Questions
 
 - Whether the network adapter is configured as static or dynamic
-- Is the client can recieve correct IP
+- Is the client can receive correct IP
 - Is there Internet reachability from the client or only web browser
 - Whether the modem powered on or off, or the ISP has some issue at a moment
 
@@ -34,7 +34,7 @@ Layer 3 and Layer 4 or higher
 
 ### 1. Check the client side
 Purpose: to check correct configuration
-Commands or checks: ipconfig (Windows), ifconfig/ip -a (Linux)
+Commands or checks: ipconfig (Windows), ip addr (Linux)
 Expected evidence: recive client IP and default gateway
 
 ### 2. Check name resolution
@@ -58,9 +58,17 @@ Expected evidence:
 - If the default gateway fails, the issue is likely local network/client/router related
 
 ### 4. Check destination or service side
-Purpose: To check if the traffic have public IPs 
-Commands or checks: reach out to the serive provider to check if the account is alive.
-Expected evidence: the account should be active
+
+Purpose: To confirm whether the issue affects all Internet access or only a specific website/service.
+Commands or checks:
+```powershell
+Test-NetConnection google.com -Port 443
+Test-NetConnection <specific-website-or-service> -Port 443
+```
+Expected evidence:
+- If multiple websites fail, the issue is likely local network, DNS, router, or ISP-related
+- If only one website fails, the issue may be related to the destination service, DNS record, firewall, or application-side problem
+- If local checks pass but all Internet access fails, check modem/router status or ISP service status
 
 ## Possible Root Causes
 
@@ -80,19 +88,7 @@ The issue is resolved when:
 - modem turned on / ISP account is active
 
 ## Plain-Language Summary
-When the computer cannot connect to the Internet, it probably dose not know where it is or where it should go. To connect the internet, it should use 2 basic things: source and destination address like when you send a mail via canada post. Regarding source information, we use ipconfig command, for destination, we use nslookup command. With both information, the computer can send a request to the Internet. Also, if the path is not available, the requrest is also unreachable and turns out to be internet failure. To make sure the path is active, we can check modem and ISP.
+When a computer cannot connect to the Internet, I would first check whether the computer has the correct address information and knows where to send traffic. This is similar to sending mail. The computer needs its own address, a destination address, and a path to send the traffic. The `ipconfig` command helps confirm the computer's own network information, such as its IP address, default gateway, and DNS server. The `nslookup` command helps confirm whether a website name can be translated into an IP address. If the computer has the correct address information but the Internet still does not work, the next step is to check the path. This includes testing the default gateway, testing a public IP address, checking DNS, and confirming whether the modem/router or ISP has an issue.
 
 ## Reflection
-
-One assumption that could be wrong is that the issue is caused by the ISP or modem. The problem may actually be limited to one client device, such as a disabled adapter, wrong IP configuration, DNS issue, or browser-specific problem.
-
-The most useful evidence would be the client IP configuration, default gateway reachability, DNS resolution result, and whether the client can reach a public IP address such as 8.8.8.8.
-
-The troubleshooting result should document the affected device, IP address, DNS server, gateway test result, modem/router status, and whether the issue was client-side, local network-side, or ISP-side.
-
-To make troubleshooting faster next time, I would follow a consistent order: check the client IP configuration first, then test the default gateway, then test public IP reachability, then test DNS, and finally check the modem/router or ISP status.
-
-- What assumption could have been wrong?
-- What evidence was most useful?
-- What should be documented?
-- What would make the troubleshooting faster next time?
+One assumption that could be wrong is that the issue is caused by the ISP or modem. The problem may actually be limited to one client device, such as a disabled adapter, wrong IP configuration, DNS issue, or browser-specific problem. The most useful evidence would be the client IP configuration, default gateway reachability, DNS resolution result, and whether the client can reach a public IP address such as 8.8.8.8. The troubleshooting result should document the affected device, IP address, DNS server, gateway test result, modem/router status, and whether the issue was client-side, local network-side, or ISP-side. To make troubleshooting faster next time, I would follow a consistent order: check the client IP configuration first, then test the default gateway, then test public IP reachability, then test DNS, and finally check the modem/router or ISP status.
