@@ -43,9 +43,19 @@ Commands or checks: nslookup (windows), dig (linux)
 Expected evidence: there is correct IPs on these commands result
 
 ### 3. Check network path
-Purpose: to check gateway device can forward the request from the device
-Commands or checks: physically check the modem power light
-Expected evidence: the light should be on
+
+Purpose: To confirm whether the client can reach the local gateway and the Internet.
+Commands or checks:
+```powershell
+ping <default-gateway>
+ping 8.8.8.8
+tracert 8.8.8.8
+```
+Expected evidence:
+- The client can reach the default gateway
+- The client can reach a public IP address
+- If DNS fails but public IP works, the issue is likely DNS-related
+- If the default gateway fails, the issue is likely local network/client/router related
 
 ### 4. Check destination or service side
 Purpose: To check if the traffic have public IPs 
