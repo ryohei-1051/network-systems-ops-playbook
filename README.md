@@ -38,7 +38,6 @@ docs/            Reusable frameworks and methodology notes
 scenarios/       Scenario-based troubleshooting and explanation files
 templates/       Reusable markdown templates
 retrospectives/  Weekly review notes and improvement tracking
-linkedin-posts/  Public-facing project update drafts
 assets/          Diagrams and supporting visuals
 ```
 
