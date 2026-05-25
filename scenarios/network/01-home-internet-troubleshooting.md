@@ -92,3 +92,5 @@ When a computer cannot connect to the Internet, I would first check whether the 
 
 ## Reflection
 One assumption that could be wrong is that the issue is caused by the ISP or modem. The problem may actually be limited to one client device, such as a disabled adapter, wrong IP configuration, DNS issue, or browser-specific problem. The most useful evidence would be the client IP configuration, default gateway reachability, DNS resolution result, and whether the client can reach a public IP address such as 8.8.8.8. The troubleshooting result should document the affected device, IP address, DNS server, gateway test result, modem/router status, and whether the issue was client-side, local network-side, or ISP-side. To make troubleshooting faster next time, I would follow a consistent order: check the client IP configuration first, then test the default gateway, then test public IP reachability, then test DNS, and finally check the modem/router or ISP status.
+
+# Complete first home internet troubleshooting scenario
