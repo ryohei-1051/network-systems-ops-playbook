@@ -1,92 +1,76 @@
 # Scenario: Home Internet Troubleshooting
 ## Scenario Summary
-
-Briefly describe the issue.
-
-Example:
-
-A user reports that they cannot access the internet from their home network.
+You cannot access the Internet from home. How would you troubleshoot?
 
 ## Initial Framing
-
-Before jumping into commands, define how the issue should be approached.
-
-Consider:
-
 - Scope
+Client device
+IP configuration (Default gateway), DNS
+Internet reachability to specific website/service
+ISP or modem/router issue
+
 - Expected behavior
-- Recent changes
-- User impact
+IP configuration should be configure by DHCP and the IP is valid (not APIPA)
+All the website/service should be reachable
+ISP or modem/router works correctly
+
 - Possible affected layers
+Layer 3 and Layer 4 or higher
 
 ## Clarifying Questions
 
-- Who or what is affected?
-- When did the issue start?
-- Is the issue constant or intermittent?
-- What changed recently?
-- What should be working?
-- Is there any error message?
+- Whether the network adapter is configured as static or dynamic
+- Is the client can recieve correct IP
+- Is there Internet reachability from the client or only web browser
+- Whether the modem powered on or off, or the ISP has some issue at a moment
 
 ## Expected Behavior
-
-Describe what successful behavior should look like.
+- Configuration is correct
+- The internet site reply with both IP and FQDN
+- The modem works correctly (They are not down)
+- The account from ISP works correctly (The account is active)
 
 ## Investigation Flow
 
 ### 1. Check the client side
-
-Purpose:
-
-Commands or checks:
-
-Expected evidence:
+Purpose: to check correct configuration
+Commands or checks: ipconfig (Windows), ifconfig/ip -a (Linux)
+Expected evidence: recive client IP and default gateway
 
 ### 2. Check name resolution
-
-Purpose:
-
-Commands or checks:
-
-Expected evidence:
+Purpose: to see if the client obtain correct destination IP from FQDN
+Commands or checks: nslookup (windows), dig (linux)
+Expected evidence: there is correct IPs on these commands result
 
 ### 3. Check network path
-
-Purpose:
-
-Commands or checks:
-
-Expected evidence:
+Purpose: to check gateway device can forward the request from the device
+Commands or checks: physically check the modem power light
+Expected evidence: the light should be on
 
 ### 4. Check destination or service side
-
-Purpose:
-
-Commands or checks:
-
-Expected evidence:
+Purpose: To check if the traffic have public IPs 
+Commands or checks: reach out to the serive provider to check if the account is alive.
+Expected evidence: the account should be active
 
 ## Possible Root Causes
 
-| Area | Possible Cause | Evidence |
-|---|---|---|
-| Client |  |  |
-| DNS |  |  |
-| Network |  |  |
-| Security |  |  |
-| Server/Service |  |  |
+|   Area   |       Possible Cause       |    Evidence    |
+|----------|----------------------------|----------------|
+|  Client  | network adapter is disable | command result |
+|   DNS   |   no access to DNS server  | command result |
+| Network |    modem has some issue    | device check |
+| Service | contract or ISP issue | account activation check |
 
 ## Verification
 
 The issue is resolved when:
-
-- 
-- 
-- 
+- there is correct IP configured on network adapter 
+- the client has destination IPs from FQDN
+- ping reachability to the destination server
+- modem turned on / ISP account is active
 
 ## Plain-Language Summary
 
-Explain the issue in simple language for a non-technical person.
 
 ## Reflection
 
