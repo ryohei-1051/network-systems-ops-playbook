@@ -70,13 +70,9 @@ The issue is resolved when:
 - modem turned on / ISP account is active
 
 ## Plain-Language Summary
+When the computer cannot connect to the Internet, it probably dose not know where it is or where it should go. To connect the internet, it should use 2 basic things: source and destination address like when you send a mail via canada post. Regarding source information, we use ipconfig command, for destination, we use nslookup command. With both information, the computer can send a request to the Internet. Also, if the path is not available, the requrest is also unreachable and turns out to be internet failure. To make sure the path is active, we can check modem and ISP.
 
 
-## Reflection
-
-What should be improved next time?
-
-Consider:
 
 - What assumption could have been wrong?
 - What evidence was most useful?
