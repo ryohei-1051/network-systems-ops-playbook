@@ -40,3 +40,47 @@ templates/       Reusable markdown templates
 retrospectives/  Weekly review notes and improvement tracking
 linkedin-posts/  Public-facing project update drafts
 assets/          Diagrams and supporting visuals
+```
+
+## Main Frameworks Used
+This project uses four reusable answer frameworks:
+| Area                               | Framework | Purpose                                           |
+| ---------------------------------- | --------- | ------------------------------------------------- |
+| Troubleshooting                    | SCOPE     | Structure technical investigation before commands |
+| Unfamiliar Technology              | RAMP      | Safely approach unknown devices or platforms      |
+| Plain-Language Explanation         | LAYER     | Explain technical concepts clearly                |
+| Behavioral / Operations Reflection | STAR-R    | Connect actions to results and lessons learned    |
+
+## Example Scenario Areas
+
+- Home internet troubleshooting
+- DNS resolution succeeds but server access fails
+- DHCP DORA and client IP behavior
+- TTL behavior and troubleshooting value
+- TLS handshake and packet-flow expectations
+- Operating an unfamiliar network switch
+- MPLS explained in plain language
+- VPN tunnel is up but traffic does not pass
+- Firewall policy versus routing issue
+- Service is running but application is unavailable
+
+## Quality Standard
+
+Each scenario should show:
+- Initial problem framing
+- Assumptions and constraints
+- Step-by-step reasoning
+- Evidence to collect
+- Commands or checks only after the problem is framed
+- Likely root causes
+- Verification steps
+- Plain-language summary
+- Reflection for improvement
+
+## Portfolio Value
+
+This project demonstrates practical infrastructure thinking beyond isolated commands.
+It shows how I communicate, troubleshoot, document, and improve operational decision-making across network and systems environments.
+
+## Status
+4-week structured project in progress.
