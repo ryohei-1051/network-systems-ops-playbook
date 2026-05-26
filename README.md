@@ -83,3 +83,10 @@ It shows how I communicate, troubleshoot, document, and improve operational deci
 
 ## Status
 4-week structured project in progress.
+
+## Scenario Index
+
+### Network
+
+- [Home Internet Troubleshooting](scenarios/network/01-home-internet-troubleshooting.md)
+- [DNS Resolves but Server Is Unreachable](scenarios/network/02-client-can-resolve-dns-but-cannot-reach-server.md)
