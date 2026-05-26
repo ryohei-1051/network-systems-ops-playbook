@@ -90,11 +90,13 @@ Purpose: To confirm whether the required application port is reachable.
 Commands or checks:
 ```powershell
 Test-NetConnection <destination-fqdn> -Port 443
+Test-NetConnection <destination-ip> -Port 443
 ```
 
 Expected evidence:
 - If the port test succeeds, the network path and port are likely open
 - If the port test fails, the issue may be firewall policy, routing, NAT, or the destination service not listening
+- If the FQDN port test fails but the IP port test succeeds, DNS, certificate name, proxy, or application virtual host behavior may be involved
 
 ### 5. Check routing and firewall path
 Purpose: To identify whether traffic is blocked or routed incorrectly between the client and server.
