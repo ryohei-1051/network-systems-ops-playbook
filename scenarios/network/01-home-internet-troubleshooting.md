@@ -5,7 +5,7 @@ You cannot access the Internet from home. How would you troubleshoot?
 ## Initial Framing
 - Scope
 Client device
-IP configuration (Default gateway), DNS
+IP configuration (Default gateway, DNS)
 Internet reachability to specific website/service
 ISP or modem/router issue
 
@@ -15,7 +15,10 @@ Known websites/services should be reachable
 ISP or modem/router works correctly
 
 - Possible affected layers
-Layer 3 and Layer 4 or higher
+Layer 1/2: cable, Wi-Fi, adapter, modem/router link  
+Layer 3: IP address, default gateway, routing  
+Layer 4: TCP/UDP port reachability  
+Layer 7: DNS, browser, website/application behavior
 
 ## Clarifying Questions
 
@@ -33,32 +36,60 @@ Layer 3 and Layer 4 or higher
 ## Investigation Flow
 
 ### 1. Check the client side
-Purpose: to check correct configuration
-Commands or checks: ipconfig (Windows), ip addr (Linux)
-Expected evidence: recive client IP and default gateway
+Purpose: To confirm whether the client has valid network configuration.
+Commands or checks:
+```powershell
+ipconfig /all
+```
+Linux:
+```bash
+ip addr
+ip route
+```
+Expected evidence:
+- The network adapter is enabled
+- The client has a valid IP address
+- The client is not using an APIPA address such as 169.254.x.x
+- The client has a default gateway
+- The client has DNS servers configured
 
-### 2. Check name resolution
-Purpose: to see if the client obtain correct destination IP from FQDN
-Commands or checks: nslookup (windows), dig (linux)
-Expected evidence: there is correct IPs on these commands result
-
-### 3. Check network path
-
-Purpose: To confirm whether the client can reach the local gateway and the Internet.
+### 2. Check local gateway reachability
+Purpose: To confirm whether the client can reach the local router/default gateway.
 Commands or checks:
 ```powershell
 ping <default-gateway>
+```
+Expected evidence:
+- If the default gateway replies, the local network path is working
+- If the default gateway does not reply, the issue may be client-side, Wi-Fi/Ethernet, router, or local network related
+
+### 3. Check public IP reachability
+Purpose: To confirm whether the client can reach the Internet without depending on DNS.
+Commands or checks:
+```powershell
 ping 8.8.8.8
 tracert 8.8.8.8
 ```
 Expected evidence:
-- The client can reach the default gateway
-- The client can reach a public IP address
+- If public IP works but websites fail, DNS or browser/application issues become more likely
+- If public IP fails, the issue may be router, modem, ISP, routing, or upstream connectivity
+
+### 4. Check name resolution
+Purpose: To confirm whether the client can translate a website name into an IP address.
+Commands or checks:
+```powershell
+nslookup google.com
+```
+Linux:
+```bash
+dig google.com
+```
+Expected evidence:
+- DNS server responds
+- The FQDN resolves to valid IP addresses
 - If DNS fails but public IP works, the issue is likely DNS-related
-- If the default gateway fails, the issue is likely local network/client/router related
 
-### 4. Check destination or service side
-
+### 5. Check destination or service side
 Purpose: To confirm whether the issue affects all Internet access or only a specific website/service.
 Commands or checks:
 ```powershell
@@ -66,9 +97,20 @@ Test-NetConnection google.com -Port 443
 Test-NetConnection <specific-website-or-service> -Port 443
 ```
 Expected evidence:
-- If multiple websites fail, the issue is likely local network, DNS, router, or ISP-related
+- If multiple websites fail, the issue is likely local network, DNS, router, modem, or ISP-related
 - If only one website fails, the issue may be related to the destination service, DNS record, firewall, or application-side problem
-- If local checks pass but all Internet access fails, check modem/router status or ISP service status
+
+### 6. Check modem/router or ISP status
+Purpose: To confirm whether the home network edge device or ISP service is causing the issue.
+Commands or checks:
+- Check modem/router power and status lights
+- Reboot modem/router if appropriate
+- Check ISP outage page or contact ISP support
+- Confirm the ISP account is active
+Expected evidence:
+- Modem/router is powered on
+- WAN/Internet status is active
+- ISP has no outage or account issue
 
 ## Possible Root Causes
 
