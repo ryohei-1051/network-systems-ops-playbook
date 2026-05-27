@@ -22,10 +22,10 @@ Layer 7: DNS, browser, website/application behavior
 
 ## Clarifying Questions
 
-- Whether the network adapter is configured as static or dynamic
+- Is the network adapter configured with a static IP address or DHCP?
 - Can the client receive the correct IP address?
-- Is there Internet reachability from the client or only web browser
-- Whether the modem is powered on or off, or the ISP has some issue at a moment
+- Is Internet access failing for the whole client, or only in the web browser?
+- Is the modem/router powered on, and is there any current ISP outage?
 
 ## Expected Behavior
 - Configuration is correct
