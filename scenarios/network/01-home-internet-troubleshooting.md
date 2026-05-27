@@ -4,14 +4,14 @@ You cannot access the Internet from home. How would you troubleshoot?
 
 ## Initial Framing
 - Scope
-Client device
-IP configuration (Default gateway, DNS)
-Internet reachability to specific website/service
-ISP or modem/router issue
+Client device  
+IP configuration (Default gateway, DNS)  
+Internet reachability to specific website/service  
+ISP or modem/router issue  
 
 - Expected behavior
-IP configuration should be assigned by DHCP and the IP is valid (not APIPA)
-Known websites/services should be reachable
+IP configuration should be assigned by DHCP and the IP is valid (not APIPA)  
+Known websites/services should be reachable  
 ISP or modem/router works correctly
 
 - Possible affected layers  
