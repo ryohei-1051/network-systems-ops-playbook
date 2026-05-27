@@ -61,7 +61,7 @@ Commands or checks:
 tracert <destination>
 ```
 Linux:
-```Bash
+```bash
 traceroute <destination>
 ```
 
