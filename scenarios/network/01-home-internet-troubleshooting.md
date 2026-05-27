@@ -9,7 +9,7 @@ IP configuration (Default gateway, DNS)
 Internet reachability to specific website/service  
 ISP or modem/router issue  
 
-- Expected behavior
+- Expected behavior  
 IP configuration should be assigned by DHCP and the IP is valid (not APIPA)  
 Known websites/services should be reachable  
 ISP or modem/router works correctly
