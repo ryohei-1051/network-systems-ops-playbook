@@ -23,14 +23,14 @@ Layer 7: DNS, browser, website/application behavior
 ## Clarifying Questions
 
 - Whether the network adapter is configured as static or dynamic
-- Is the client can receive correct IP
+- Can the client receive the correct IP address?
 - Is there Internet reachability from the client or only web browser
-- Whether the modem powered on or off, or the ISP has some issue at a moment
+- Whether the modem is powered on or off, or the ISP has some issue at a moment
 
 ## Expected Behavior
 - Configuration is correct
-- The internet site reply with both IP and FQDN
-- The modem works correctly (They are not down)
+- Internet sites should be reachable by both IP address and FQDN
+- The modem works correctly (It is not down)
 - The account from ISP works correctly (The account is active)
 
 ## Investigation Flow
@@ -114,23 +114,58 @@ Expected evidence:
 
 ## Possible Root Causes
 
-|   Area   |       Possible Cause       |    Evidence    |
-|----------|----------------------------|----------------|
-|  Client  | network adapter is disable | command result |
-|   DNS   |   no access to DNS server  | command result |
-| Network |    modem has some issue    | device check |
-| Service | contract or ISP issue | account activation check |
+| Area | Possible Cause | Evidence |
+|---|---|---|
+| Client | Network adapter is disabled or misconfigured | No valid IP address, no default gateway, or APIPA address |
+| Local Network | Client cannot reach the default gateway | Ping to default gateway fails |
+| DNS | DNS server is unreachable or returns incorrect results | `nslookup` fails or returns unexpected IP |
+| Router/Modem | Home router or modem has an issue | No WAN status, warning lights, or gateway unreachable |
+| ISP | ISP outage or inactive account | Multiple devices fail and ISP confirms outage/account issue |
+| Destination Service | Only one website or service is unavailable | Other websites work, but specific service fails |
 
 ## Verification
 
 The issue is resolved when:
-- there is correct IP configured on network adapter 
-- the client has destination IPs from FQDN
-- ping reachability to the destination server
-- modem turned on / ISP account is active
+
+- The client has a valid IP address, default gateway, and DNS server
+- The client can reach the default gateway
+- The client can reach a public IP address
+- The client can resolve FQDNs using DNS
+- Required websites or services are reachable on the expected port, such as TCP 443
+- The result confirms whether the issue was client-side, local network-side, ISP-side, or destination-side
 
 ## Plain-Language Summary
 When a computer cannot connect to the Internet, I would first check whether the computer has the correct address information and knows where to send traffic. This is similar to sending mail. The computer needs its own address, a destination address, and a path to send the traffic. The `ipconfig` command helps confirm the computer's own network information, such as its IP address, default gateway, and DNS server. The `nslookup` command helps confirm whether a website name can be translated into an IP address. If the computer has the correct address information but the Internet still does not work, the next step is to check the path. This includes testing the default gateway, testing a public IP address, checking DNS, and confirming whether the modem/router or ISP has an issue.
 
 ## Reflection
-One assumption that could be wrong is that the issue is caused by the ISP or modem. The problem may actually be limited to one client device, such as a disabled adapter, wrong IP configuration, DNS issue, or browser-specific problem. The most useful evidence would be the client IP configuration, default gateway reachability, DNS resolution result, and whether the client can reach a public IP address such as 8.8.8.8. The troubleshooting result should document the affected device, IP address, DNS server, gateway test result, modem/router status, and whether the issue was client-side, local network-side, or ISP-side. To make troubleshooting faster next time, I would follow a consistent order: check the client IP configuration first, then test the default gateway, then test public IP reachability, then test DNS, and finally check the modem/router or ISP status.
+
+One assumption that could be wrong is that the issue is caused by the ISP or modem. The problem may actually be limited to one client device, such as a disabled adapter, wrong IP configuration, DNS issue, or browser-specific problem.
+
+The most useful evidence would be:
+
+- Client IP configuration
+- Default gateway reachability
+- Public IP reachability
+- DNS resolution result
+- Specific service port reachability
+
+The troubleshooting result should document:
+
+- Affected device
+- IP address
+- Default gateway
+- DNS server
+- Gateway test result
+- Public IP test result
+- DNS test result
+- Modem/router status
+- Final root cause area
+
+To make troubleshooting faster next time, I would follow a consistent order:
+
+1. Check client IP configuration
+2. Test the default gateway
+3. Test public IP reachability
+4. Test DNS
+5. Test the specific website or service
+6. Check modem/router or ISP status
