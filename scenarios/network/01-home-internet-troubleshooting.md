@@ -14,7 +14,7 @@ IP configuration should be assigned by DHCP and the IP is valid (not APIPA)
 Known websites/services should be reachable
 ISP or modem/router works correctly
 
-- Possible affected layers
+- Possible affected layers  
 Layer 1/2: cable, Wi-Fi, adapter, modem/router link  
 Layer 3: IP address, default gateway, routing  
 Layer 4: TCP/UDP port reachability  
