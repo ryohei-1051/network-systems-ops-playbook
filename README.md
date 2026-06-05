@@ -93,3 +93,4 @@ It shows how I communicate, troubleshoot, document, and improve operational deci
 - [DNS Resolves but Server Is Unreachable](scenarios/network/02-client-can-resolve-dns-but-cannot-reach-server.md)
 - [TTL Explained and Used for Troubleshooting](scenarios/network/03-ttl-explained-and-troubleshot.md)
 - [DHCP DORA and Client IP Acquisition](scenarios/network/04-dhcp-dora-client-ip-acquisition.md)
+- [Operating an Unfamiliar Switch](scenarios/network/05-unfamiliar-switch-operation.md)
