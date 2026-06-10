@@ -99,6 +99,7 @@ It shows how I communicate, troubleshoot, document, and improve operational deci
 ### Security
 
 - [TLS Handshake and Packet Flow](scenarios/security/01-tls-handshake-and-packet-flow.md)
+- [Firewall Policy Versus Routing Issue](scenarios/security/02-firewall-policy-vs-routing-issue.md)
 
 ## Retrospectives
 - [Week 01 Scenario Review](retrospectives/week-01-scenario-review.md)
