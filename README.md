@@ -104,3 +104,4 @@ It shows how I communicate, troubleshoot, document, and improve operational deci
 
 ## Retrospectives
 - [Week 01 Scenario Review](retrospectives/week-01-scenario-review.md)
+- [Week 02 Security and Packet Flow Review](retrospectives/week-02-security-packet-flow-review.md)
