@@ -100,6 +100,7 @@ It shows how I communicate, troubleshoot, document, and improve operational deci
 
 - [TLS Handshake and Packet Flow](scenarios/security/01-tls-handshake-and-packet-flow.md)
 - [Firewall Policy Versus Routing Issue](scenarios/security/02-firewall-policy-vs-routing-issue.md)
+- [VPN Tunnel Is Up but Traffic Does Not Pass](scenarios/security/03-vpn-tunnel-up-but-traffic-fails.md)
 
 ## Retrospectives
 - [Week 01 Scenario Review](retrospectives/week-01-scenario-review.md)
