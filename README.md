@@ -95,5 +95,9 @@ It shows how I communicate, troubleshoot, document, and improve operational deci
 - [DHCP DORA and Client IP Acquisition](scenarios/network/04-dhcp-dora-client-ip-acquisition.md)
 - [Operating an Unfamiliar Switch](scenarios/network/05-unfamiliar-switch-operation.md)
 
+### Security
+
+- [TLS Handshake and Packet Flow](scenarios/security/01-tls-handshake-and-packet-flow.md)
+
 ## Retrospectives
 - [Week 01 Scenario Review](retrospectives/week-01-scenario-review.md)
